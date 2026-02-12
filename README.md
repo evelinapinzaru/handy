@@ -27,13 +27,13 @@ Handy is a mobile application that enables hands-free control of desktop present
 ```
 handy/
 ├── src/
-│   ├── \_\_init\_\_.py
+│   ├── __init__.py
 │   ├── detector.py       # Gesture detection logic
 │   ├── server.py         # Laptop WebSocket server
 │   └── client.py         # Phone app
 ├── tests/
-│   ├── \_\_init\_\_.py
-│   └── test\_camera.py   # Test hand tracking
+│   ├── __init__.py
+│   └── test_camera.py   # Test hand tracking
 ├── config/
 │   └── settings.py       # Configuration (IP, thresholds, ports)
 ├── requirements.txt      # Python dependencies
@@ -42,14 +42,15 @@ handy/
 ```
 
 ## How It Works
-```
-┌─────────────┐         ┌──────────────┐         ┌─────────────┐
-│   Phone     │         │   Laptop     │         │ Presentation│
-│             │         │              │         │  Software   │
-│  MediaPipe  │ ─────▶  │  WebSocket   │ ─────▶  │  (PowerPoint│
-│   Camera    │ Gesture │   Server     │ Keyboard│   /PDF)     │
-│             │  JSON   │              │  Events │             │
-└─────────────┘         └──────────────┘         └─────────────┘
+
+```mermaid
+flowchart LR
+    A[Phone<br/>MediaPipe<br/>Camera] ---->|Gesture JSON| B[Laptop<br/>WebSocket Server]
+    B ---->|Keyboard Events| C[Presentation Software<br/>PowerPoint / PDF]
+
+    style A stroke-dasharray: 5 5
+    style B stroke-dasharray: 5 5
+    style C stroke-dasharray: 5 5
 ```
 
 1. **Phone**: Captures video, detects hand landmarks, recognizes gestures
