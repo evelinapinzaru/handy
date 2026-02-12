@@ -43,15 +43,7 @@ handy/
 
 ## How It Works
 
-```mermaid
-flowchart LR
-    A[Phone<br/>MediaPipe<br/>Camera] ---->|Gesture JSON| B[Laptop<br/>WebSocket Server]
-    B ---->|Keyboard Events| C[Presentation Software<br/>PowerPoint / PDF]
-
-    style A stroke-dasharray: 5 5
-    style B stroke-dasharray: 5 5
-    style C stroke-dasharray: 5 5
-```
+![ver1 drawio](https://github.com/user-attachments/assets/7481c8b9-a82b-40cc-8760-41b95ae1d8e9)
 
 1. **Phone**: Captures video, detects hand landmarks, recognizes gestures
 2. **Communication**: Sends gesture commands via WebSocket
